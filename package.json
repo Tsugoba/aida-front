@@ -6,34 +6,38 @@
 		"lint": "tsc -p tsconfig.lint.json && echo '\\033[0;32m✔ No TSC errors\\033[0m' && stylelint \"**/*.scss\" && echo '\\033[0;32m✔ No stylelint errors\\033[0m' && next lint"
 	},
 	"lint-staged": {
-    "*.ts": "eslint",
-    "*.tsx": "eslint"
-  },
+		"*.ts": "eslint",
+		"*.tsx": "eslint"
+	},
 	"dependencies": {
+		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
+		"@types/socket.io": "^3.0.2",
+		"@types/socket.io-client": "^3.0.0",
+		"eslint": "^8",
+		"eslint-config-next": "14.2.15",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-jsx-a11y": "^6.9.0",
+		"eslint-plugin-prettier": "^5.1.3",
+		"eslint-plugin-react": "^7.34.3",
 		"next": "^15.2.4",
+		"prettier": "^3.3.2",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"sass": "^1.86.0",
-		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
-		"eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-jsx-a11y": "^6.9.0",
-    "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-react": "^7.34.3",
-		"eslint": "^8",
-    "eslint-config-next": "14.2.15",
-		"prettier": "^3.3.2",
+		"socket.io": "^4.8.1",
+		"socket.io-client": "^4.8.1",
 		"stylelint": "^16.8.1",
-    "stylelint-config-standard-scss": "^13.1.0",
+		"stylelint-config-standard-scss": "^13.1.0",
 		"zustand": "^4.5.4"
 	},
 	"devDependencies": {
 		"@types/node": "22.13.13",
 		"@types/react": "19.0.12",
-		"typescript": "5.8.2",
-		"typescript-plugin-css-modules": "^5.1.0",
 		"eslint": "^8",
-    "eslint-config-next": "14.2.15",
+		"eslint-config-next": "14.2.15",
 		"stylelint": "^16.8.1",
-    "stylelint-config-standard-scss": "^13.1.0"
+		"stylelint-config-standard-scss": "^13.1.0",
+		"typescript": "5.8.2",
+		"typescript-plugin-css-modules": "^5.1.0"
 	}
 }

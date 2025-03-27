@@ -45,7 +45,10 @@ export function Menu() {
         <div>
           <ul className={style.menu}>
             {itemsMenu.map((item) => (
-              <li key='item' onClick={() => navigate(item.description)}>
+              <li
+                key={item.description}
+                onClick={() => navigate(item.description)}
+              >
                 <img
                   src={`/icons/${item.icon}.svg`}
                   alt='Descripción del icono'

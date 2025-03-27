@@ -15,3 +15,76 @@
   font-style: normal;
   font-weight: 400;
 }
+
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.image {
+  width: 88px;
+  height: 123px;
+  position: relative;
+}
+
+.informationGeneral,
+.information {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.informationGeneral {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ddd;
+  justify-content: space-around;
+}
+
+.infoTitle {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.infoSubtitle {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.detailProduct {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.table {
+  margin: auto;
+  padding-bottom: 1.5rem;
+}
+
+.th {
+  color: #121313;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+}
+
+.td,
+.tdDisabled {
+  color: #121313;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+}
+
+.tdDisabled {
+  color: #aaa;
+}

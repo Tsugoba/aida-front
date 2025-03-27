@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode, useEffect } from 'react';
+import { Socket, io } from 'socket.io-client';
 
 import { useNotificationStore } from '../../core/useNotificationStore/useNotificationStore';
 
@@ -9,21 +10,24 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
     addNotification: state.addNotification,
   }));
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:3000/api/socket');
-    ws.onopen = () => {
-      console.log('Connected to WebSocket');
-      ws.send('Hello, WebSocket!');
-    };
-    ws.onmessage = (event) => {
-      console.log('Message received:', event.data);
-      addNotification({ message: 'test' });
-    };
-    ws.onclose = () => {
-      console.log('WebSocket connection closed');
-    };
-    return () => {
-      ws.close();
-    };
+    if (typeof window !== 'undefined') {
+      const socket: Socket = io(
+        'wss://81svrpf4a7.execute-api.us-east-1.amazonaws.com/prod/'
+      );
+
+      socket.on('connect', () => {
+        console.log('Connected to server');
+      });
+
+      socket.on('message', (msg: string) => {
+        console.log('Message from server: ', msg);
+        addNotification({ message: msg });
+      });
+
+      return () => {
+        socket.disconnect();
+      };
+    }
   }, []);
 
   return <>{children}</>;
