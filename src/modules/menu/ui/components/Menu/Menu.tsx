@@ -1,13 +1,25 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 import style from './Menu.module.scss';
 
 export function Menu() {
+  const router = useRouter();
   const itemsMenu = [
     { icon: 'bag', description: 'Cliente omnicanal' },
     { icon: 'process', description: 'Procesos' },
-    { icon: 'process', description: 'Producto' },
-    // 'AIDA',
-    // 'Ajustes y ayuda',
+    { icon: 'product', description: 'Producto' },
+    { icon: 'lisa', description: 'AIDA' },
+    { icon: 'help', description: 'Ajustes y ayuda' },
   ];
+
+  const navigate = (destination: string) => {
+    if (destination === 'AIDA') {
+      router.push('/aida');
+    }
+  };
+
   return (
     <div className={style.container}>
       <section className={style.header}>
@@ -33,7 +45,7 @@ export function Menu() {
         <div>
           <ul className={style.menu}>
             {itemsMenu.map((item) => (
-              <li key='item'>
+              <li key='item' onClick={() => navigate(item.description)}>
                 <img
                   src={`/icons/${item.icon}.svg`}
                   alt='Descripción del icono'
