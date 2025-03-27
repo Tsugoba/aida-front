@@ -1,4 +1,13 @@
-import { FC, createContext, useCallback, useContext, useState } from 'react';
+'use client';
+
+import {
+  FC,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { createPortal } from 'react-dom';
 
 import { ToastWrapper } from '../../ui/ToastWrapper/ToastWrapper';
@@ -29,11 +38,16 @@ const defaultToastConfig: Omit<ToastProps, 'id'> = {
 export const ToastProvider: FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const [isClient, setIsClient] = useState(false);
   const [toasts, setToasts] = useState<ToastProps[]>([]);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const addToast: AddToastFunc = useCallback(
     (toast) => {
-      const uuid = `toast-${toasts.length}-${new Date().toLocaleTimeString()}`;
+      const uuid = `toast-${crypto.randomUUID()}`;
 
       setToasts((prev) => [
         ...prev,
@@ -56,18 +70,19 @@ export const ToastProvider: FC<{ children: React.ReactNode }> = ({
 
   return (
     <ToastContext.Provider value={{ toasts, addToast, removeToast }}>
-      {createPortal(
-        <div data-testid='toast-container-component'>
-          {toasts?.map((toast) => (
-            <ToastWrapper
-              key={toast.id}
-              displayTime={DEFAULT_AUTO_CLOSE}
-              {...toast}
-            />
-          ))}
-        </div>,
-        document.body
-      )}
+      {isClient &&
+        createPortal(
+          <div data-testid='toast-container-component'>
+            {toasts?.map((toast) => (
+              <ToastWrapper
+                key={toast.id}
+                displayTime={DEFAULT_AUTO_CLOSE}
+                {...toast}
+              />
+            ))}
+          </div>,
+          document.body
+        )}
       {children}
     </ToastContext.Provider>
   );

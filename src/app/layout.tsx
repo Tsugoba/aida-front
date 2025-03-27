@@ -1,5 +1,5 @@
-import { ClientLayout } from '@/modules/aida/ui/components/ClientLayout/ClientLayout';
 import { NotificationProvider } from '@/modules/shared/providers/NotificationProvider/NotificationProvider';
+import { ToastProvider } from '@/modules/shared/providers/ToastProvider/ToastProvider';
 
 import './globals.scss';
 
@@ -10,10 +10,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body style={{ margin: 0 }}>
-        <ClientLayout>
+      <body>
+        <ToastProvider>
           <NotificationProvider>{children}</NotificationProvider>
-        </ClientLayout>
+        </ToastProvider>
       </body>
     </html>
   );

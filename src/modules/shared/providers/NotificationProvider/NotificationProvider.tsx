@@ -2,13 +2,9 @@
 
 import { ReactNode, useEffect } from 'react';
 
-import { useNotificationStore } from '../../core/useNotificationStore/useNotificationStore';
 import { useToast } from '../ToastProvider/ToastProvider';
 
 export const NotificationProvider = ({ children }: { children: ReactNode }) => {
-  const { addNotification } = useNotificationStore((state) => ({
-    addNotification: state.addNotification,
-  }));
   const { addToast } = useToast();
   useEffect(() => {
     const ws = new WebSocket(
@@ -24,10 +20,6 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
         'descripcion',
         JSON.parse(event.data).Records[0].dynamodb.NewImage.descripcion.S
       );
-      addNotification({
-        message: JSON.parse(event.data).Records[0].dynamodb.NewImage.descripcion
-          .S,
-      });
       addToast({
         description: JSON.parse(event.data).Records[0].dynamodb.NewImage
           .descripcion.S,
@@ -37,7 +29,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
     return () => {
       ws.close();
     };
-  }, [addNotification]);
+  }, []);
 
   return <>{children}</>;
 };
