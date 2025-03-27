@@ -83,6 +83,7 @@ export function Aida() {
         <div className={style.family}>
           {lines.map((line) => (
             <LineBreak
+              key={line.line}
               line={line.line}
               breakLine={line.breakLine}
               types={line.types}

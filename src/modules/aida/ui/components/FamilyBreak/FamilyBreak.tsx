@@ -9,7 +9,12 @@ type FamilyBreakProps = {
   clickLine: (line: string) => void;
 };
 
-export function LineBreak({ line, breakLine, types, clickLine }: FamilyBreakProps) {
+export function LineBreak({
+  line,
+  breakLine,
+  types,
+  clickLine,
+}: FamilyBreakProps) {
   return (
     <div className={style.container}>
       <div>
@@ -28,7 +33,7 @@ export function LineBreak({ line, breakLine, types, clickLine }: FamilyBreakProp
             <div>{breakLine} %</div>
           </div>
           {types.map((type) => (
-            <div className={style.typeInfo}>
+            <div key={type.type} className={style.typeInfo}>
               <div>{type.type}</div>
               <div>{type.breakCoefficient}</div>
             </div>
