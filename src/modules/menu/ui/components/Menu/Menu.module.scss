@@ -1,0 +1,66 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 1rem 1rem;
+  color: white;
+  background-image: url('/background.png');
+  background-size: cover;
+  background-position: center;
+  height: 22%;
+  justify-content: end;
+  gap: 0.5rem;
+}
+
+.storeId {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.storeDescription {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleInformation {
+  color: #121314;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.subtitleInformation {
+  color: #666;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 16px;
+}
+
+.search {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.searchContent {
+  margin: 1rem 0;
+}
