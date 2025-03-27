@@ -1,34 +1,43 @@
 'use client';
 
 import { ReactNode, useEffect } from 'react';
-import { Socket, io } from 'socket.io-client';
 
 import { useNotificationStore } from '../../core/useNotificationStore/useNotificationStore';
+import { useToast } from '../ToastProvider/ToastProvider';
 
 export const NotificationProvider = ({ children }: { children: ReactNode }) => {
   const { addNotification } = useNotificationStore((state) => ({
     addNotification: state.addNotification,
   }));
+  const { addToast } = useToast();
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const socket: Socket = io(
-        'wss://81svrpf4a7.execute-api.us-east-1.amazonaws.com/prod/'
+    const ws = new WebSocket(
+      'wss://81svrpf4a7.execute-api.us-east-1.amazonaws.com/prod'
+    );
+
+    ws.onopen = () => {
+      console.log('Connected');
+    };
+
+    ws.onmessage = (event) => {
+      console.log(
+        'descripcion',
+        JSON.parse(event.data).Records[0].dynamodb.NewImage.descripcion.S
       );
-
-      socket.on('connect', () => {
-        console.log('Connected to server');
+      addNotification({
+        message: JSON.parse(event.data).Records[0].dynamodb.NewImage.descripcion
+          .S,
       });
-
-      socket.on('message', (msg: string) => {
-        console.log('Message from server: ', msg);
-        addNotification({ message: msg });
+      addToast({
+        description: JSON.parse(event.data).Records[0].dynamodb.NewImage
+          .descripcion.S,
       });
+    };
 
-      return () => {
-        socket.disconnect();
-      };
-    }
-  }, []);
+    return () => {
+      ws.close();
+    };
+  }, [addNotification]);
 
   return <>{children}</>;
 };

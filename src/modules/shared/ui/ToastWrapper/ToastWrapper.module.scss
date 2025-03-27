@@ -1,0 +1,41 @@
+.container {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  background-color: rgba(2555, 255, 255, 0.5);
+  width: 95%;
+  padding: 1rem 0;
+  border-radius: 12px;
+}
+
+.image {
+  position: relative;
+  width: 40px;
+  height: 100%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title {
+  color: #000;
+  font-family: 'MangoSand-Regular', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.message {
+  font-family: 'MangoSand-Regular', sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #000;
+}
