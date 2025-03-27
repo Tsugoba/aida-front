@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { ToastProps } from '../../providers/ToastProvider/ToastProvider';
@@ -8,6 +9,7 @@ import { ToastProps } from '../../providers/ToastProvider/ToastProvider';
 import style from './ToastWrapper.module.scss';
 
 export const ToastWrapper = ({ description, displayTime }: ToastProps) => {
+  const router = useRouter();
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -18,10 +20,14 @@ export const ToastWrapper = ({ description, displayTime }: ToastProps) => {
     return () => clearTimeout(timer);
   }, [displayTime]);
 
+  const navigate = () => {
+    router.push('list/woman');
+  };
+
   if (!visible) return null;
 
   return (
-    <div className={style.container}>
+    <div className={style.container} onClick={() => navigate()}>
       <div className={style.image}>
         <Image
           alt='Aida'
