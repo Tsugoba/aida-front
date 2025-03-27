@@ -1,5 +1,6 @@
-import { Metadata } from "next";
-import { Root } from "../../modules/home/ui/components/Root/Root";
+import { Metadata } from 'next';
+
+import { Root } from '../../modules/home/ui/components/Root/Root';
 
 export const metadata: Metadata = {
   title: 'Ada | Home',

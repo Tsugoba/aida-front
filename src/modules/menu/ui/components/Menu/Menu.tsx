@@ -2,11 +2,11 @@ import style from './Menu.module.scss';
 
 export function Menu() {
   const itemsMenu = [
-    'Cliente omnicanal',
-    'Procesos',
-    'Producto',
-    'AIDA',
-    'Ajustes y ayuda',
+    { icon: 'bag', description: 'Cliente omnicanal' },
+    { icon: 'process', description: 'Procesos' },
+    { icon: 'process', description: 'Producto' },
+    // 'AIDA',
+    // 'Ajustes y ayuda',
   ];
   return (
     <div className={style.container}>
@@ -31,7 +31,19 @@ export function Menu() {
           />
         </div>
         <div>
-          {/* {itemsMenu.map((item) => )} */}
+          <ul className={style.menu}>
+            {itemsMenu.map((item) => (
+              <li key='item'>
+                <img
+                  src={`/icons/${item.icon}.svg`}
+                  alt='Descripción del icono'
+                  width='24'
+                  height='24'
+                />
+                <span>{item.description}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </div>
