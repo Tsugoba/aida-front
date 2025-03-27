@@ -10,13 +10,13 @@ export function Menu() {
     { icon: 'bag', description: 'Cliente omnicanal' },
     { icon: 'process', description: 'Procesos' },
     { icon: 'product', description: 'Producto' },
-    { icon: 'lisa', description: 'AIDA' },
+    { icon: 'analysis', description: 'Análisis operativo' },
     { icon: 'help', description: 'Ajustes y ayuda' },
   ];
 
   const navigate = (destination: string) => {
-    if (destination === 'AIDA') {
-      router.push('/aida');
+    if (destination === 'Análisis operativo') {
+      router.push('/analysis');
     }
   };
 

@@ -1,4 +1,4 @@
-import { Aida } from '@/modules/home/ui/components/Aida/Aida';
+import { Aida } from '@/modules/aida/ui/components/Aida/Aida';
 
 export default function AidaPage() {
   return <Aida />;
