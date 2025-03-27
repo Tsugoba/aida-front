@@ -1,3 +1,52 @@
+@font-face {
+  font-family: 'MangoSand-Black';
+  src: url('/fonts/MangoSans-Black.woff2') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MangoSand-BlackItalic';
+  src: url('/fonts/MangoSans-BlackItalic.woff2') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MangoSand-Bold';
+  src: url('/fonts/MangoSans-Bold.woff2') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MangoSand-BoldItalic';
+  src: url('/fonts/MangoSans-BoldItalic.woff2') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MangoSand-Light';
+  src: url('/fonts/MangoSans-Light.woff2') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MangoSand-LightItalic';
+  src: url('/fonts/MangoSans-LightItalic.woff2') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MangoSand-Regular';
+  src: url('/fonts/MangoSans-Regular.woff2') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 button {
   background-color: white;
   border: 0.825px solid #D7D7D8;
